@@ -1,0 +1,103 @@
+
+
+<br>
+<div class="container-fluid">
+
+    <div class="row" >
+        <!--    <div class="row" id='oculto' style='display:none;'>-->
+
+        <div class="col-md-12">
+            <!--            <form>-->
+            <form  name="histprial" id="devolucionpersona_form" method="post" enctype="multipart/form-data" action="<?php echo $this->basePath(); ?>/historial" class="form-horizontal form-label-left" novalidate >
+
+                <div class="col-md-12">
+
+                    <h1 class="text-center">
+                        Historial
+                    </h1>
+                    <br>
+                    <br>
+                    <br>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Id de Productividad
+                                </th>
+                              
+                                <th>
+                                    Usuario
+                                </th>
+                               
+                                <th>
+                                       Fecha
+                                </th>
+                                <th>
+                                       Proyeccion
+                                </th>
+                                <th>
+                                    Tendencia
+                                </th>
+                                <th>
+                                    Meta Diaria
+                                </th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                         
+
+                                foreach ($this->historial as $h) :
+                                    ?>
+                                    <tr class="active">
+                                        <td>
+                                            <?php echo $h['Id'] ?>
+                                        </td>
+                                       
+                                        <td>
+                                            <?php echo $h['usuario'] ?> 
+                                        </td>
+                                       
+                                        <td>
+                                            <?php echo $h['Fecha'] ?> 
+                                        </td>
+                                        <td>
+                                            <?php echo $h['Proyeccion'] ?> 
+                                        </td>
+                                        <td>
+                                            <?php echo $h['Tendencia'] ?> 
+                                        </td>
+                                        <td>
+                                            <?php echo $h['MetaDiaria'] ?> 
+                                        </td>
+                                      
+                                    </tr>
+                                <?php
+                                endforeach;
+                      
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3 ><?php 
+                   // echo $this->json
+                ?></h3>
+                
+            </form>
+
+        </div>
+    </div>
+
+    
+    <br>
+    <hr>
+
+    
+    
+    
+
+</div>
+
+

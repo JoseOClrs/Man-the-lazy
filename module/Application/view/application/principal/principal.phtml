@@ -1,0 +1,316 @@
+ <script>   
+function calcularProyeccion()
+    {
+    
+        // Obtenemos el valor por el id
+        var rgu=document.getElementById("rgus").value;
+        var diast=document.getElementById("diast").value;
+        var diash=document.getElementById("diash").value;
+        var proyeccion=0;
+        proyeccion=(rgu/diast)*diash;
+    
+    var Proyec = parseFloat(proyeccion).toFixed(2);	
+//alert(porId);
+        document.Resultados.Proyeccion.value = Proyec;
+        document.Tendencia.pro.value = Proyec;
+         document.Mdiaria.rgusi.value = rgu;   
+    }
+    
+    
+    function calcularTendencia()
+    {
+    
+        // Obtenemos el valor por el id
+        var proyeccion=document.getElementById("pro").value;
+        var metam=document.getElementById("metam").value;
+   // alert(metam);
+        var tendencia=0;
+        tendencia=(proyeccion/metam)*100;
+      var tend = parseFloat(tendencia).toFixed(2);
+
+    document.Resultados.Tendencia.value = tend;
+    document.Mdiaria.metam2.value = metam; 
+    }
+    
+    
+        function metaDiaria()
+    {
+    
+        // Obtenemos el valor por el id
+        var metam2=document.getElementById("metam2").value;
+        var rgusi=document.getElementById("rgusi").value;
+        var diasf=document.getElementById("diasf").value;
+   // alert(metam);
+        var metadiaria=0;
+        metadiaria=(metam2-rgusi)/diasf;
+      
+var met = parseFloat(metadiaria).toFixed(2);
+    document.Resultados.MetaDiaria.value = met
+            
+    }
+    </script>
+
+    
+    <script>
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = "0123456789";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+        
+        tecla2= (document.all) ? e.keyCode : e.which;
+                if (tecla2 == 32)
+                    return false;
+
+            }
+</script> 
+
+
+<div>
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+            <h2>
+                Calculos 
+            </h2>
+            </center>
+        </div>
+    </div>
+    
+    <br>
+<br>    
+<hr>    
+    
+    <div class="row">
+        <div class="col-md-12">
+
+           <form name="proyeccion" id="proyeccion" class="form-horizontal form-label-left" novalidate >
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend>Calcular proyeccion</legend>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">RGU'S Instaladas</label>  
+                        <div class="col-md-4">
+                            <input id="rgus" name="rgus" type="text" placeholder="RGU'S Instaladas" class="form-control input-md" required="required" onkeypress="return soloLetras(event)">
+                           
+                        </div>
+                    </div>
+                    
+                       <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Dias Trabajados</label>  
+                        <div class="col-md-4">
+                            <input id="diast" name="diast" type="text" placeholder=" Dias Trabajados" class="form-control input-md" required="required" onkeypress="return soloLetras(event)">
+                           
+                        </div>
+                    </div>
+                       
+                             <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Dias Habiles</label>  
+                        <div class="col-md-4">
+                            <input id="diash" name="diash" type="text" placeholder="Dias Habiles" class="form-control input-md" required="required" onkeypress="return soloLetras(event)">
+                           
+                        </div>
+                    </div>                 
+                    <br>
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="button1id"></label>
+                        <div class="col-md-8">
+                          <input class="btn btn-success"  type="button" value="Calcular" onclick="calcularProyeccion()">
+                            <a href="<?php echo $this->basePath() . '/principal' ?>" class="btn btn-default"> <span>Cancelar</span></a>
+                        </div>
+                        <div id="resultado">
+                            
+                           
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </fieldset>
+            </form>
+            
+            <br> <br>
+            
+            
+            
+            
+            
+            
+            
+            
+            <form  name="Tendencia" id="Tendencia" class="form-horizontal form-label-left" novalidate >
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend>Calcular Tendencia</legend>
+
+                <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Proyeccion</label>  
+                        <div class="col-md-4">
+                            <input id="pro" name="pro" type="text" readonly="readonly" class="form-control input-md" required="required">
+                           
+                        </div>
+                    </div>
+                    
+                       <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Meta Mensual</label>  
+                        <div class="col-md-4">
+                            <input id="metam" name="metam" type="text" placeholder="Meta Mensual" class="form-control input-md" required="required" onkeypress="return soloLetras(event)">
+                           
+                        </div>
+                    </div>
+   
+
+
+                    
+<br>
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="button1id"></label>
+                        <div class="col-md-8">
+                          <input class="btn btn-success"  type="button" value="Calcular" onclick="calcularTendencia()">
+                            <a href="<?php echo $this->basePath() . '/principal' ?>" class="btn btn-default"> <span>Cancelar</span></a>
+                          
+                        </div>
+                    </div>
+                    
+                    
+                </fieldset>
+            </form>
+            
+            <form  name="Mdiaria" id="Mdiaria" class="form-horizontal form-label-left" novalidate >
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend>Calcular Meta Diaria</legend>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Meta mensual</label>  
+                        <div class="col-md-4">
+                            <input id="metam2" name="metam2" type="text" readonly="readonly" class="form-control input-md" required="required">
+                           
+                        </div>
+                    </div>
+                    
+                <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">RGU'S Instaladas</label>  
+                        <div class="col-md-4">
+                            <input id="rgusi" name="rgusi" type="text" readonly="readonly" class="form-control input-md" required="required">
+                           
+                        </div>
+                    </div>
+                       
+                             <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Dias Faltantes</label>  
+                        <div class="col-md-4">
+                            <input id="diasf" name="diasf" type="text" placeholder="Dias Faltantes" class="form-control input-md" required="required" onkeypress="return soloLetras(event)">
+                           
+                        </div>
+                    </div>
+
+
+                    
+<br>
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="button1id"></label>
+                        <div class="col-md-8">
+                        <input class="btn btn-success"  type="button" value="Calcular" onclick="metaDiaria()">
+                            <a href="<?php echo $this->basePath() . '/principal' ?>" class="btn btn-default"> <span>Cancelar</span></a>
+                          
+                        </div>
+                    </div>
+                    
+                    
+                </fieldset>
+            </form>
+
+
+<br>    
+<hr>    
+    
+
+<form id="Resultados" name="Resultados" method="post" enctype="multipart/form-data" action="<?php echo $this->basePath(); ?>/principal" class="form-horizontal form-label-left" novalidate >
+                <fieldset>
+                    
+                    
+                    <center> <h1>Resultados</h1> </center>
+                    <br>
+                       <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Proyeccion</label>  
+                        <div class="col-md-4">
+                            <input id="Proyeccion" name="Proyeccion" type="text"  class="form-control input-md" readonly="readonly"> 
+                           
+                        </div>
+                    </div>
+                       
+                             <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Tendencia</label>  
+                        <div class="col-md-4">
+                            <input id="Tendencia" name="Tendencia" type="text"  class="form-control input-md" readonly="readonly"> 
+                           
+                        </div>
+                    </div>
+                                   <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Meta diaria</label>  
+                        <div class="col-md-4">
+                            <input id="MetaDiaria" name="MetaDiaria" type="text"  class="form-control input-md" readonly="readonly"> 
+                           
+                        </div>
+                    </div>
+                    
+                                           <!-- Button (Double) -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="button1id"></label>
+                        <div class="col-md-8">
+                          
+                            <button id="send" type="submit" class="btn btn-success">Guardar</button>
+                            
+                            <a href="<?php echo $this->basePath() . '/principal' ?>" class="btn btn-default"> <span>Cancelar</span></a>
+                          
+                        </div>
+                    </div>
+                    
+
+                </fieldset>
+            </form>
+
+
+
+
+        </div>
+    </div>
+</div></div>
+
+
+
+
+       
